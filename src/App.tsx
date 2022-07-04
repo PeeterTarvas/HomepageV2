@@ -2,14 +2,25 @@ import React from 'react';
 import {Card} from "./Components/Card/Card";
 import {Navbar} from "./Components/Navbar/Navbar";
 import {LanguagesGrid} from "./Components/Skillsgrid/Skillsgrid";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Home} from "./pages/Home";
+import {About} from "./pages/About";
+import {Contact} from "./pages/Contact";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
-    <div className="h-screen w-screen">
-      <LanguagesGrid/>
+    <BrowserRouter>
+        <Navbar/>
+        <Routes>
+            <Route path={"/"} element={<Home/>}/>
+            <Route path={"/about"} element={<About/>}/>
+            <Route path={"/contact"} element={<Contact/>}/>
+            <Route path={"*"} element={<ErrorPage/>}/>
+        </Routes>
 
-    </div>
+    </BrowserRouter>
   );
 }
-
 export default App;
+
